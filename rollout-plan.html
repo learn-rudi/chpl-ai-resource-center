@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Phased Rollout Plan · CHPL AI Resource Center</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1d2e;
+    --ink-soft: #2a3a52;
+    --paper: #f7f4ee;
+    --paper-2: #efeae0;
+    --accent: #b85a2c;
+    --accent-2: #d6904a;
+    --teal: #2c6e7a;
+    --moss: #4a6a3f;
+    --plum: #6b3a5c;
+    --line: #d9d0bf;
+  }
+  html, body { background: var(--paper); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; }
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:12px; }
+  .pill { display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
+  .pill-amber { background:#fbe9d3; color:#7a3e16; }
+  .pill-teal { background:#d6e8eb; color:#1c4f59; }
+  .pill-moss { background:#dde6d4; color:#314824; }
+  .pill-plum { background:#e6d4e0; color:#4a253f; }
+  .pill-ink { background:#e3e6ec; color:#2a3a52; }
+  .divider { height:1px; background:var(--line); }
+  table.cmp { width:100%; border-collapse: collapse; font-size: 13px; }
+  table.cmp th, table.cmp td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align: top; }
+  table.cmp th { background: var(--paper-2); font-weight:600; color: var(--ink-soft); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+  .phase-banner { background: var(--ink); color:#fff; border-radius: 12px 12px 0 0; padding: 12px 20px; display:flex; align-items:center; justify-content:space-between; }
+  .phase-banner.p1 { background: linear-gradient(90deg, #b85a2c, #d6904a); }
+  .phase-banner.p2 { background: linear-gradient(90deg, #2c6e7a, #4a8b97); }
+  .phase-banner.p3 { background: linear-gradient(90deg, #4a6a3f, #6b8b5f); }
+  .phase-banner.p4 { background: linear-gradient(90deg, #6b3a5c, #8b5a7c); }
+  .phase-body { border-left: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); border-radius: 0 0 12px 12px; background:#fff; padding: 24px; }
+  .meta-row { display: grid; grid-template-columns: 140px 1fr; gap: 12px 16px; font-size: 14px; }
+  .meta-row dt { color: var(--ink-soft); font-weight: 500; }
+  .meta-row dd { color: var(--ink); }
+  .timeline-bar { background: var(--paper-2); height: 6px; border-radius: 3px; position: relative; }
+  .timeline-fill { position:absolute; top:0; left:0; height: 6px; border-radius: 3px; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- Top nav -->
+<div class="bg-[var(--ink)] text-white text-xs">
+  <div class="max-w-5xl mx-auto px-6 py-2 flex items-center justify-between flex-wrap gap-2">
+    <a href="./" class="text-white/80 hover:text-white">← CHPL AI Resource Center</a>
+    <span class="text-white/60">Phased Rollout Plan · v0.1</span>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="max-w-5xl mx-auto px-6 pt-12 pb-6">
+  <div class="flex items-center gap-2 mb-3">
+    <span class="pill pill-ink">Planning document</span>
+    <span class="pill pill-amber">For executive review</span>
+  </div>
+  <h1 class="serif text-4xl md:text-5xl leading-tight">A phased rollout, not an all-staff training day.</h1>
+  <p class="mt-4 text-[var(--ink-soft)] max-w-3xl text-lg">900 staff and 42 branches is too much surface area for one workshop. This plan stages the rollout in four phases over roughly 12 months — starting with the 20 people who set policy, ending with branch-level pilots that pay for themselves.</p>
+</header>
+
+<!-- TL;DR -->
+<section class="max-w-5xl mx-auto px-6 pb-10">
+  <div class="card p-6">
+    <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-2">The shape of the plan</div>
+    <div class="grid md:grid-cols-4 gap-4 text-sm">
+      <div>
+        <div class="pill pill-amber mb-2">Phase 1</div>
+        <div class="font-semibold">Executive Foundations</div>
+        <div class="text-[var(--ink-soft)] text-xs mt-1">20 people · ~30 days</div>
+        <div class="text-[var(--ink-soft)] text-xs">Survey + 90-min workshop</div>
+      </div>
+      <div>
+        <div class="pill pill-teal mb-2">Phase 2</div>
+        <div class="font-semibold">Manager Activation</div>
+        <div class="text-[var(--ink-soft)] text-xs mt-1">65 people · ~60 days</div>
+        <div class="text-[var(--ink-soft)] text-xs">Survey by region + 2-hr workshop</div>
+      </div>
+      <div>
+        <div class="pill pill-moss mb-2">Phase 3</div>
+        <div class="font-semibold">Staff &amp; Branch Rollout</div>
+        <div class="text-[var(--ink-soft)] text-xs mt-1">~815 people · ~120 days</div>
+        <div class="text-[var(--ink-soft)] text-xs">Mobile-first + branch lunch &amp; learns</div>
+      </div>
+      <div>
+        <div class="pill pill-plum mb-2">Phase 4</div>
+        <div class="font-semibold">Pilots &amp; Governance</div>
+        <div class="text-[var(--ink-soft)] text-xs mt-1">Ongoing</div>
+        <div class="text-[var(--ink-soft)] text-xs">Real workflows, real ROI</div>
+      </div>
+    </div>
+    <div class="divider my-5"></div>
+    <div class="grid md:grid-cols-3 gap-4 text-xs text-[var(--ink-soft)]">
+      <div><span class="font-semibold text-[var(--ink)] block">Why phased?</span>One-shot training to 900 people doesn't change behavior. Layered cohorts let leadership set tone before staff are asked to act.</div>
+      <div><span class="font-semibold text-[var(--ink)] block">Why mobile-first for staff?</span>~50% of CHPL staff don't work primarily at a desk. The survey and bite-sized learning must travel on a phone.</div>
+      <div><span class="font-semibold text-[var(--ink)] block">Why not survey everyone?</span>Executive and manager input shapes policy. For 815 frontline staff, we sample by branch — enough signal, less survey fatigue.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE 1 -->
+<section class="max-w-5xl mx-auto px-6 pb-10">
+  <div class="phase-banner p1">
+    <div class="flex items-center gap-3 text-white">
+      <span class="pill" style="background:rgba(255,255,255,.2);color:#fff">Phase 1</span>
+      <span class="serif text-2xl">Executive Foundations</span>
+    </div>
+    <span class="text-white/80 text-xs">Month 1 · 20 senior leaders</span>
+  </div>
+  <div class="phase-body">
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <dl class="meta-row">
+          <dt>Cohort</dt><dd>20 senior leadership team members (executives + senior directors)</dd>
+          <dt>Survey</dt><dd>Yes — full survey, sent individually with name attribution. Used to baseline leadership comfort and surface unspoken governance concerns.</dd>
+          <dt>Format</dt><dd>One 90-minute in-person workshop + 30-minute follow-up debrief two weeks later.</dd>
+          <dt>Delivery</dt><dd>Live, in-room. Phones away. Notebook + handout.</dd>
+          <dt>Topics</dt><dd>What AI is and isn't. Patron-data implications. Energy &amp; ethics. How to answer "what's our policy?" from staff. How to spot a bad pitch.</dd>
+          <dt>Outputs</dt><dd>(1) Shared vocabulary. (2) Draft governance principles. (3) Decision: which 1–2 tools we provision first. (4) Sign-off to begin Phase 2.</dd>
+        </dl>
+      </div>
+      <div>
+        <div class="card p-5 bg-[var(--paper-2)] border-dashed">
+          <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-2">What this phase produces</div>
+          <ul class="text-sm space-y-2">
+            <li class="flex gap-2"><span class="text-[var(--accent)]">→</span><span><strong>Executive insights dashboard</strong> — your live results in the same format as the <a href="./insights-preview/" class="underline">preview</a>.</span></li>
+            <li class="flex gap-2"><span class="text-[var(--accent)]">→</span><span><strong>Draft governance one-pager</strong> — patron data, copyright, approved tools, escalation path.</span></li>
+            <li class="flex gap-2"><span class="text-[var(--accent)]">→</span><span><strong>Manager-track curriculum brief</strong> — built from what executives chose to prioritize.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE 2 -->
+<section class="max-w-5xl mx-auto px-6 pb-10">
+  <div class="phase-banner p2">
+    <div class="flex items-center gap-3 text-white">
+      <span class="pill" style="background:rgba(255,255,255,.2);color:#fff">Phase 2</span>
+      <span class="serif text-2xl">Manager Activation</span>
+    </div>
+    <span class="text-white/80 text-xs">Months 2–3 · 65 middle managers</span>
+  </div>
+  <div class="phase-body">
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <dl class="meta-row">
+          <dt>Cohort</dt><dd>65 middle managers — branch managers, department heads, regional coordinators.</dd>
+          <dt>Survey</dt><dd>Yes — same survey, segmented by region and function. Adds three questions about workflow pain points in their team.</dd>
+          <dt>Format</dt><dd>Two-hour workshop, delivered in three regional cohorts of ~22 (no manager travels more than 20 minutes). Optional 30-day office-hours follow-up.</dd>
+          <dt>Delivery</dt><dd>Mostly in person. Hybrid option for managers covering night/weekend shifts.</dd>
+          <dt>Topics</dt><dd>How to coach staff (not police them). How to evaluate a tool. How to scope a small pilot. Patron-facing scenarios. The "ethical no" — when to push back on a tool request.</dd>
+          <dt>Outputs</dt><dd>(1) Per-region readiness map. (2) Ranked list of candidate pilot workflows. (3) Manager toolkit (FAQ, escalation tree, prompt examples).</dd>
+        </dl>
+      </div>
+      <div>
+        <div class="card p-5 bg-[var(--paper-2)] border-dashed">
+          <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-2">Why managers second, not last</div>
+          <p class="text-sm text-[var(--ink-soft)]">Managers field the questions: <em>"What does the library want us to do with AI?"</em> If they get trained after staff, every conversation in between is a guess. Phase 2 gives them a script before the questions start.</p>
+          <div class="divider my-3"></div>
+          <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-2">Cohort split</div>
+          <ul class="text-xs space-y-1">
+            <li>· West (Cheviot, Westwood, Mt. Healthy, Price Hill) — ~22 managers</li>
+            <li>· Central (Main, Madisonville, Avondale, Forest Park) — ~22 managers</li>
+            <li>· East (Anderson, Blue Ash, Symmes, Sharonville) — ~21 managers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE 3 -->
+<section class="max-w-5xl mx-auto px-6 pb-10">
+  <div class="phase-banner p3">
+    <div class="flex items-center gap-3 text-white">
+      <span class="pill" style="background:rgba(255,255,255,.2);color:#fff">Phase 3</span>
+      <span class="serif text-2xl">Staff &amp; Branch Rollout</span>
+    </div>
+    <span class="text-white/80 text-xs">Months 4–7 · ~815 staff · mobile-first</span>
+  </div>
+  <div class="phase-body">
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <dl class="meta-row">
+          <dt>Cohort</dt><dd>~815 general staff — reference, programming, circulation, shelvers, IT, admin, outreach, maker space.</dd>
+          <dt>Survey</dt><dd>Yes, but sampled — not census. Aim for ~300 responses (35–40%) sampled proportionally across branches and roles. Anonymous. Mobile-optimized. Branch managers nudge during shift huddles.</dd>
+          <dt>Format</dt><dd>Asynchronous short-form video (3–5 min episodes) + monthly "bring your problem from work" live sessions per branch cluster. Lunch &amp; learns at flagship branches (Main, Forest Park, Anderson) open to anyone.</dd>
+          <dt>Delivery</dt><dd><strong>Mobile-first.</strong> Survey on phone. Videos on phone. Live sessions optional and recorded. No staff is asked to log into a desktop to start.</dd>
+          <dt>Topics</dt><dd>Demystify ("what is it really?"). Personal use (vacation planning, recipes, language learning) — builds confidence. Patron scenarios. Hallucinations &amp; how to spot them. Approved tools &amp; what's off-limits.</dd>
+          <dt>Outputs</dt><dd>(1) Branch-level confidence index. (2) Staff prompt library (grown from real shift questions). (3) Champion identification — ~30 staff who become local AI helpers.</dd>
+        </dl>
+      </div>
+      <div>
+        <div class="card p-5 bg-[var(--paper-2)] border-dashed">
+          <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-2">Mobile-first delivery</div>
+          <p class="text-sm text-[var(--ink-soft)]">CHPL's frontline staff don't sit at desks. The survey is one screen scroll on a phone, 6 minutes max. Training videos auto-play on mute with captions so they work in a quiet workroom. Live sessions are 25 minutes, scheduled during shift overlap windows.</p>
+          <div class="divider my-3"></div>
+          <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-2">Why sample instead of census</div>
+          <p class="text-sm text-[var(--ink-soft)]">A representative sample of ~300 gives the same statistical signal as 815 respondents — and avoids survey fatigue with staff who already get pulled in many directions. We can always re-survey a branch if its results look anomalous.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE 4 -->
+<section class="max-w-5xl mx-auto px-6 pb-10">
+  <div class="phase-banner p4">
+    <div class="flex items-center gap-3 text-white">
+      <span class="pill" style="background:rgba(255,255,255,.2);color:#fff">Phase 4</span>
+      <span class="serif text-2xl">Pilots &amp; Governance</span>
+    </div>
+    <span class="text-white/80 text-xs">Month 5 onward · Ongoing</span>
+  </div>
+  <div class="phase-body">
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <dl class="meta-row">
+          <dt>Goal</dt><dd>Move from "we trained on AI" to "we use AI to do something real." One bounded workflow at a time, with measurable hours saved.</dd>
+          <dt>Pilot #1</dt><dd><strong>Scheduling &amp; substitute coverage</strong> — Paula and Kyla named this on the call. Painful monthly process across 42 branches. A scoped agent could cut hours of admin into minutes. Pilot at Forest Park first.</dd>
+          <dt>Governance</dt><dd>Quarterly review with the executive team. Updates to approved tools, principles, FAQ. Public-facing patron statement.</dd>
+          <dt>Resource Center</dt><dd>This site, fully populated: approved tools list, prompt library, training video library, patron FAQ, pilot tracker.</dd>
+          <dt>Cadence</dt><dd>Monthly office hours for managers. Quarterly executive briefing. Annual all-staff "state of AI at CHPL" recap.</dd>
+        </dl>
+      </div>
+      <div>
+        <div class="card p-5 bg-[var(--paper-2)] border-dashed">
+          <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-2">Candidate pilots (ranked from Phase 3 data)</div>
+          <ol class="text-sm space-y-2 list-decimal list-inside text-[var(--ink-soft)]">
+            <li>Scheduling &amp; substitute coverage</li>
+            <li>Program description &amp; flyer drafting</li>
+            <li>Meeting note summarization</li>
+            <li>Patron reference assist (with guardrails)</li>
+            <li>Translating materials (Spanish, ASL captions)</li>
+            <li>Grant-writing assistance</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison table -->
+<section class="max-w-5xl mx-auto px-6 pb-12">
+  <h2 class="serif text-2xl mb-4">Phase comparison at a glance</h2>
+  <div class="card overflow-hidden">
+    <table class="cmp">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Phase 1 · Execs</th>
+          <th>Phase 2 · Managers</th>
+          <th>Phase 3 · Staff</th>
+          <th>Phase 4 · Pilots</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>People</strong></td><td>20</td><td>65</td><td>~815 (sampled)</td><td>—</td></tr>
+        <tr><td><strong>Survey</strong></td><td>Full, named</td><td>Full, by region</td><td>Anonymous, sampled</td><td>—</td></tr>
+        <tr><td><strong>Format</strong></td><td>90-min workshop</td><td>2-hr workshop ×3 regions</td><td>Async video + monthly lunch &amp; learn</td><td>Workflow build sprints</td></tr>
+        <tr><td><strong>Delivery</strong></td><td>In person</td><td>In person + hybrid</td><td>Mobile-first</td><td>In branch</td></tr>
+        <tr><td><strong>Duration</strong></td><td>~30 days</td><td>~60 days</td><td>~120 days</td><td>Ongoing</td></tr>
+        <tr><td><strong>Output</strong></td><td>Vocab + principles</td><td>Region readiness map</td><td>Branch index + champions</td><td>Working pilots, ROI</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Open questions -->
+<section class="max-w-5xl mx-auto px-6 pb-16">
+  <h2 class="serif text-2xl mb-4">Open questions for Paula and Kyla</h2>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="card p-5">
+      <div class="font-semibold mb-1">1. Phase 1 timing</div>
+      <p class="text-sm text-[var(--ink-soft)]">Can we land the Executive Foundations workshop before your October/November staff development days? That gives Phase 2 enough runway to ride that momentum.</p>
+    </div>
+    <div class="card p-5">
+      <div class="font-semibold mb-1">2. Survey distribution</div>
+      <p class="text-sm text-[var(--ink-soft)]">For Phase 1, who sends the link to executives — you two, or the CEO/Director? Attribution affects response rate.</p>
+    </div>
+    <div class="card p-5">
+      <div class="font-semibold mb-1">3. Mobile reality check</div>
+      <p class="text-sm text-[var(--ink-soft)]">Do all 815 staff have a CHPL-issued device, or do many use personal phones? That changes how we deliver Phase 3 content.</p>
+    </div>
+    <div class="card p-5">
+      <div class="font-semibold mb-1">4. Pilot owner</div>
+      <p class="text-sm text-[var(--ink-soft)]">Who would own the scheduling pilot internally? We'd build alongside that person — they become the local expert, not us.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[var(--ink)] text-white/80">
+  <div class="max-w-5xl mx-auto px-6 py-8 flex flex-wrap items-center justify-between gap-4 text-sm">
+    <div>
+      <div class="serif text-xl text-white">CHPL × RUDI</div>
+      <div class="text-xs">Phased Rollout Plan · draft for executive review · v0.1</div>
+    </div>
+    <div class="text-right text-xs">
+      <div><a href="./" class="hover:text-white">← Back to Resource Center</a></div>
+      <div class="mt-1">Brandon Z. Hoff · brandonz@heritagehill.co</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
