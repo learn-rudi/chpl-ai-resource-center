@@ -21,4 +21,4 @@ A living home for everything Cincinnati & Hamilton County Public Library needs t
 
 ## Contact
 
-Brandon Z. Hoff · brandonz@heritagehill.co
+Brandon Z. Hoff · hoff@learnrudi.com
