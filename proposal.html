@@ -31,17 +31,19 @@
   .pill-ink { background:#e3e6ec; color:#2a3a52; }
   .pill-muted { background:var(--paper-2); color:var(--ink-soft); border:1px solid var(--line); }
   .divider { height:1px; background:var(--line); }
-  .check { color: var(--moss); font-weight:700; }
-  .dash { color: var(--line); font-weight:700; }
-  .tier-card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:24px; position: relative; }
-  .tier-card.featured { border-color: var(--accent); box-shadow: 0 8px 24px rgba(184,90,44,0.12); }
-  .tier-card.featured::before { content: "Most likely fit"; position:absolute; top:-12px; left:24px; background: var(--accent); color:#fff; padding: 3px 10px; border-radius: 999px; font-size:10px; font-weight:700; letter-spacing:.06em; text-transform: uppercase;}
+  .check { color: var(--moss); font-weight:700; font-size: 16px; }
+  .dash { color: #c8c0ad; font-weight:700; font-size: 16px; }
+  .tier-card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:28px; position: relative; }
+  .tier-card.featured { border: 2px solid var(--accent); box-shadow: 0 12px 28px rgba(184,90,44,0.15); background: linear-gradient(180deg, #fff 0%, #fffaf3 100%); }
+  .tier-card.featured::before { content: "Recommended"; position: absolute; top:-13px; left:50%; transform: translateX(-50%); background: var(--accent); color:#fff; padding: 4px 14px; border-radius: 999px; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform: uppercase; white-space: nowrap;}
   .price { font-family: 'Fraunces', Georgia, serif; font-weight: 700; letter-spacing: -0.02em; }
-  table.cmp { width:100%; border-collapse: collapse; font-size: 13px; }
-  table.cmp th, table.cmp td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; text-align: center; }
-  table.cmp th { background: var(--paper-2); font-weight: 600; color: var(--ink); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  table.cmp { width:100%; border-collapse: collapse; font-size: 14px; }
+  table.cmp th, table.cmp td { padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: middle; text-align: center; }
+  table.cmp th { background: var(--paper-2); font-weight: 700; color: var(--ink); font-size: 13px; letter-spacing: .02em; }
   table.cmp tr td:first-child, table.cmp tr th:first-child { text-align: left; font-weight: 500; }
+  table.cmp tr.tier-row th { font-family: 'Fraunces', Georgia, serif; font-size: 16px; }
   .insight { border-left: 3px solid var(--accent); background: #fff8ef; }
+  .deliverable-card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:20px; }
 </style>
 </head>
 <body class="min-h-screen">
@@ -50,13 +52,13 @@
 <div class="bg-[var(--ink)] text-white text-xs">
   <div class="max-w-5xl mx-auto px-6 py-2 flex items-center justify-between flex-wrap gap-2">
     <a href="./" class="text-white/80 hover:text-white">← CHPL AI Resource Center</a>
-    <span class="text-white/60">Proposal · draft v0.1 · prepared 12 May 2026</span>
+    <span class="text-white/60">Proposal · draft v0.2 · prepared 12 May 2026</span>
   </div>
 </div>
 
 <!-- Header -->
 <header class="max-w-5xl mx-auto px-6 pt-12 pb-8">
-  <div class="flex items-center gap-2 mb-3">
+  <div class="flex items-center gap-2 mb-3 flex-wrap">
     <span class="pill pill-amber">Proposal</span>
     <span class="pill pill-ink">For Paula &amp; Kyla</span>
     <span class="pill pill-muted">Draft for review</span>
@@ -69,7 +71,7 @@
 <section class="max-w-5xl mx-auto px-6 pb-10">
   <div class="insight rounded-md p-5">
     <div class="text-xs uppercase tracking-wide text-[var(--accent)] font-semibold mb-2">Already built and ready to use</div>
-    <p class="text-[var(--ink-soft)] mb-3">The work below isn't theoretical — your sample versions are already live. Phase 1 replaces sample data with your real responses and customizes the action plan to CHPL's actual leadership input.</p>
+    <p class="text-[var(--ink-soft)] mb-3">The work below isn't theoretical — sample versions are already live. Phase 1 replaces sample data with your real responses and customizes the action plan to CHPL's actual leadership input.</p>
     <div class="flex flex-wrap gap-2">
       <a href="https://tally.so/r/1ADzEl" target="_blank" rel="noopener" class="pill pill-amber hover:underline">→ Executive Survey</a>
       <a href="./insights-preview/" class="pill pill-teal hover:underline">→ Insights Dashboard (sample)</a>
@@ -79,65 +81,63 @@
   </div>
 </section>
 
-<!-- Three tiers -->
+<!-- TIER COMPARISON -->
 <section class="max-w-5xl mx-auto px-6 pb-12">
-  <h2 class="serif text-2xl mb-2">Three ways to start</h2>
-  <p class="text-sm text-[var(--ink-soft)] mb-6">Each tier delivers a real, working Phase 1. Pick the one that fits your current-year budget — you can always layer add-ons in later.</p>
+  <h2 class="serif text-2xl mb-2">Two ways to start</h2>
+  <p class="text-sm text-[var(--ink-soft)] mb-8">Either tier delivers a real, working Phase 1. Pick what fits your current-year budget — you can always add the Resource Center later.</p>
 
-  <div class="grid md:grid-cols-3 gap-5">
-    <!-- LEAN -->
+  <div class="grid md:grid-cols-2 gap-6 mt-2">
+    <!-- TIER 1 -->
     <div class="tier-card">
-      <div class="pill pill-muted mb-3">Lean</div>
-      <div class="price text-4xl">$2,500</div>
-      <div class="text-xs text-[var(--ink-soft)] mb-5">Minimum viable Phase 1</div>
-      <ul class="space-y-2 text-sm">
-        <li class="flex gap-2"><span class="check">✓</span><span>Branded executive survey (deployed)</span></li>
-        <li class="flex gap-2"><span class="check">✓</span><span>90-min Executive Foundations workshop, in-room</span></li>
-        <li class="flex gap-2"><span class="check">✓</span><span>Raw survey data (CSV export)</span></li>
-        <li class="flex gap-2 text-[var(--ink-soft)]"><span class="dash">—</span><span>Branded dashboard</span></li>
-        <li class="flex gap-2 text-[var(--ink-soft)]"><span class="dash">—</span><span>Custom action plan</span></li>
-        <li class="flex gap-2 text-[var(--ink-soft)]"><span class="dash">—</span><span>Resource Center website</span></li>
-        <li class="flex gap-2 text-[var(--ink-soft)]"><span class="dash">—</span><span>Leadership debrief</span></li>
+      <div class="pill pill-muted mb-3">Tier 1</div>
+      <div class="serif text-2xl mb-1">Executive AI Workshop</div>
+      <div class="price text-5xl mt-3">$2,500</div>
+      <div class="text-xs text-[var(--ink-soft)] mb-6">Up to 20 executives · 60-min session</div>
+      <ul class="space-y-3 text-sm">
+        <li class="flex gap-3"><span class="check">✓</span><span>CHPL-branded executive survey, deployed</span></li>
+        <li class="flex gap-3"><span class="check">✓</span><span><strong>60-min Executive AI Workshop</strong> — AI Foundations + walkthrough of CHPL's survey results</span></li>
+        <li class="flex gap-3"><span class="check">✓</span><span>Workshop slide deck (PDF take-home)</span></li>
+        <li class="flex gap-3"><span class="check">✓</span><span>Raw survey data (CSV export)</span></li>
       </ul>
     </div>
 
-    <!-- STANDARD -->
+    <!-- TIER 2 -->
     <div class="tier-card featured">
-      <div class="pill pill-amber mb-3">Standard</div>
-      <div class="price text-4xl">$5,000</div>
-      <div class="text-xs text-[var(--ink-soft)] mb-5">The sweet spot</div>
-      <ul class="space-y-2 text-sm">
-        <li class="flex gap-2"><span class="check">✓</span><span>Everything in Lean</span></li>
-        <li class="flex gap-2"><span class="check">✓</span><span><strong>Branded insights dashboard</strong> — your data, board-ready</span></li>
-        <li class="flex gap-2"><span class="check">✓</span><span><strong>Custom action plan</strong> — synthesis memo with next steps from your data</span></li>
-        <li class="flex gap-2 text-[var(--ink-soft)]"><span class="dash">—</span><span>Resource Center website</span></li>
-        <li class="flex gap-2 text-[var(--ink-soft)]"><span class="dash">—</span><span>Leadership debrief</span></li>
-      </ul>
-    </div>
-
-    <!-- FULL -->
-    <div class="tier-card">
-      <div class="pill pill-moss mb-3">Full</div>
-      <div class="price text-4xl">$7,500</div>
-      <div class="text-xs text-[var(--ink-soft)] mb-5">Everything end-to-end</div>
-      <ul class="space-y-2 text-sm">
-        <li class="flex gap-2"><span class="check">✓</span><span>Everything in Standard</span></li>
-        <li class="flex gap-2"><span class="check">✓</span><span><strong>AI Resource Center website</strong> — live URL CHPL owns</span></li>
-        <li class="flex gap-2"><span class="check">✓</span><span><strong>30-min leadership debrief</strong> + summary memo</span></li>
-        <li class="flex gap-2"><span class="check">✓</span><span><strong>Workshop recording &amp; transcript</strong> — for execs who can't attend live</span></li>
+      <div class="pill pill-amber mb-3">Tier 2</div>
+      <div class="serif text-2xl mb-1">Workshop + AI Resource Center</div>
+      <div class="price text-5xl mt-3">$5,000</div>
+      <div class="text-xs text-[var(--ink-soft)] mb-6">Everything in Tier 1, plus deliverables CHPL keeps</div>
+      <ul class="space-y-3 text-sm">
+        <li class="flex gap-3"><span class="check">✓</span><span>Everything in Tier 1</span></li>
+        <li class="flex gap-3"><span class="check">✓</span><span><strong>Branded insights dashboard</strong> — CHPL's data, board-ready</span></li>
+        <li class="flex gap-3"><span class="check">✓</span><span><strong>Custom action plan memo</strong> — what your data says + recommended next 60 days</span></li>
+        <li class="flex gap-3"><span class="check">✓</span><span><strong>AI Resource Center (live URL)</strong> — persistent home for dashboard, plan, slides, all assets</span></li>
+        <li class="flex gap-3"><span class="check">✓</span><span><strong>Workshop recording + transcript</strong> — for execs who can't attend live</span></li>
       </ul>
     </div>
   </div>
 
-  <div class="card mt-6 p-5">
-    <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-2">À la carte add-ons (if mixing tiers)</div>
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3 text-sm">
-      <div class="flex justify-between border-b border-[var(--line)] pb-1"><span>Branded dashboard</span><span class="font-semibold">+$1,500</span></div>
-      <div class="flex justify-between border-b border-[var(--line)] pb-1"><span>Custom action plan</span><span class="font-semibold">+$1,500</span></div>
-      <div class="flex justify-between border-b border-[var(--line)] pb-1"><span>Resource Center site</span><span class="font-semibold">+$1,000</span></div>
-      <div class="flex justify-between border-b border-[var(--line)] pb-1"><span>Leadership debrief</span><span class="font-semibold">+$500</span></div>
-      <div class="flex justify-between border-b border-[var(--line)] pb-1"><span>Recording + transcript</span><span class="font-semibold">+$500</span></div>
-    </div>
+  <!-- Comparison table -->
+  <div class="card mt-8 overflow-hidden">
+    <table class="cmp">
+      <thead>
+        <tr class="tier-row">
+          <th></th>
+          <th>$2,500<br><span class="text-xs font-normal text-[var(--ink-soft)] font-sans">Tier 1</span></th>
+          <th>$5,000<br><span class="text-xs font-normal text-[var(--ink-soft)] font-sans">Tier 2</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>CHPL-branded executive survey</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>60-min Executive AI Workshop (in-room)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Workshop slides (PDF)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Raw survey data (CSV)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Branded insights dashboard</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Custom action plan memo</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>AI Resource Center (hosted URL)</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Workshop recording + transcript</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
@@ -145,59 +145,59 @@
 <section class="max-w-5xl mx-auto px-6 pb-12">
   <h2 class="serif text-2xl mb-4">What you're actually getting</h2>
   <div class="grid md:grid-cols-2 gap-4">
-    <div class="card p-5">
-      <div class="pill pill-amber mb-2">Survey</div>
-      <div class="font-semibold mb-1">Executive AI Foundations Survey</div>
-      <p class="text-sm text-[var(--ink-soft)]">CHPL-branded, anonymous, ~5 minutes, mobile-friendly. Already deployed and ready to share. Measures comfort, current usage, top concerns (patron data, intellectual freedom, public perception), and 60-day workflow priorities.</p>
+    <div class="deliverable-card">
+      <div class="pill pill-amber mb-2">Workshop</div>
+      <div class="font-semibold mb-1">60-min Executive AI Foundations</div>
+      <p class="text-sm text-[var(--ink-soft)]">In-room session for up to 20 executives. First 30 min: AI foundations — what it is and isn't, patron-data implications, energy &amp; ethics, how to talk to staff. Last 30 min: walkthrough of CHPL's survey results, surfacing governance questions and shared vocabulary.</p>
+    </div>
+    <div class="deliverable-card">
+      <div class="pill pill-teal mb-2">Survey</div>
+      <div class="font-semibold mb-1">CHPL-Branded Executive Survey</div>
+      <p class="text-sm text-[var(--ink-soft)]">Anonymous, ~5 minutes, mobile-friendly. Already deployed and ready to share. Measures comfort, current usage, top concerns (patron data, intellectual freedom, public perception), and 60-day workflow priorities.</p>
       <a href="https://tally.so/r/1ADzEl" target="_blank" rel="noopener" class="text-xs text-[var(--accent)] hover:underline mt-2 inline-block">→ Open the live survey</a>
     </div>
-    <div class="card p-5">
-      <div class="pill pill-teal mb-2">Dashboard</div>
+    <div class="deliverable-card">
+      <div class="pill pill-moss mb-2">Slides + Data</div>
+      <div class="font-semibold mb-1">Workshop Slide Deck + Raw CSV</div>
+      <p class="text-sm text-[var(--ink-soft)]">Take-home PDF of the workshop deck (with CHPL's data baked in) plus the raw Tally export. The minimum any executive needs to refer back to what was discussed.</p>
+    </div>
+    <div class="deliverable-card">
+      <div class="pill pill-plum mb-2">Tier 2 add-on</div>
       <div class="font-semibold mb-1">Branded Insights Dashboard</div>
       <p class="text-sm text-[var(--ink-soft)]">Your real survey results turned into a board-ready visual report. Eight sections from response demographics to top concerns to per-function readiness. Replaces the sample data preview with CHPL's actual numbers.</p>
       <a href="./insights-preview/" class="text-xs text-[var(--accent)] hover:underline mt-2 inline-block">→ Preview the format</a>
     </div>
-    <div class="card p-5">
-      <div class="pill pill-moss mb-2">Action Plan</div>
-      <div class="font-semibold mb-1">Custom Action Plan / Readout Memo</div>
+    <div class="deliverable-card">
+      <div class="pill pill-plum mb-2">Tier 2 add-on</div>
+      <div class="font-semibold mb-1">Custom Action Plan Memo</div>
       <p class="text-sm text-[var(--ink-soft)]">A short, focused memo: <em>"Here's what your data says, and here's what we'd do about it in the next 60 days."</em> Includes the 1–2 workflows ranked highest for an AI pilot, draft governance principles based on what your team flagged, and recommended next-phase scope.</p>
     </div>
-    <div class="card p-5">
-      <div class="pill pill-plum mb-2">Workshop</div>
-      <div class="font-semibold mb-1">90-min Executive Foundations</div>
-      <p class="text-sm text-[var(--ink-soft)]">In-room, phones away. Demystifies what AI is and isn't, walks through CHPL's survey results live, surfaces governance questions, and lands shared vocabulary for the leadership team. Format: 30 min foundations, 30 min CHPL-specific data, 30 min discussion.</p>
-    </div>
-    <div class="card p-5">
-      <div class="pill pill-ink mb-2">Resource Center</div>
-      <div class="font-semibold mb-1">Public AI Resource Center</div>
-      <p class="text-sm text-[var(--ink-soft)]">A live URL CHPL owns and can share with staff, the Board, the county, and patrons. Indexes the rollout plan, survey, dashboard, governance docs, and future training materials. Grows with each phase.</p>
+    <div class="deliverable-card">
+      <div class="pill pill-plum mb-2">Tier 2 add-on</div>
+      <div class="font-semibold mb-1">AI Resource Center (Live URL)</div>
+      <p class="text-sm text-[var(--ink-soft)]">A hosted URL CHPL owns and shares with staff, the Board, the county, and patrons. Houses the dashboard, action plan, slides, recording, and grows with each phase. The persistent home for your AI program.</p>
       <a href="./" class="text-xs text-[var(--accent)] hover:underline mt-2 inline-block">→ See the current state</a>
-    </div>
-    <div class="card p-5">
-      <div class="pill pill-muted mb-2">Closeout</div>
-      <div class="font-semibold mb-1">Leadership Debrief + Recording</div>
-      <p class="text-sm text-[var(--ink-soft)]">30-min follow-up with Paula and Kyla 1–2 weeks after the workshop to translate what came up into commitments. Recording + transcript so anyone who missed live can catch up at their own pace.</p>
     </div>
   </div>
 </section>
 
 <!-- Timeline -->
 <section class="max-w-5xl mx-auto px-6 pb-12">
-  <h2 class="serif text-2xl mb-4">Timeline</h2>
+  <h2 class="serif text-2xl mb-4">Timeline · 30 days</h2>
   <div class="card p-5">
     <table class="cmp">
       <thead>
         <tr><th>Week</th><th>Milestone</th><th>Who</th></tr>
       </thead>
       <tbody>
-        <tr><td>Week 0</td><td>Proposal accepted · survey link sent to 20 execs</td><td>RUDI + CHPL</td></tr>
+        <tr><td>Week 0</td><td>Proposal accepted · survey link sent to 20 executives</td><td>RUDI + CHPL</td></tr>
         <tr><td>Weeks 1–2</td><td>Survey open · individual responses collected anonymously</td><td>20 execs</td></tr>
-        <tr><td>Week 3</td><td>Survey closes · dashboard populated · action plan drafted</td><td>RUDI</td></tr>
-        <tr><td>Week 4</td><td>90-min Executive Foundations workshop · debrief scheduled</td><td>RUDI + 20 execs</td></tr>
-        <tr><td>Week 5–6</td><td>Debrief with Paula &amp; Kyla · Phase 2 scope confirmed</td><td>RUDI + Paula &amp; Kyla</td></tr>
+        <tr><td>Week 3</td><td>Survey closes · slides &amp; (Tier 2) dashboard + action plan prepared</td><td>RUDI</td></tr>
+        <tr><td>Week 4</td><td>60-min Executive AI Workshop · slides delivered same day</td><td>RUDI + 20 execs</td></tr>
+        <tr><td>Week 5</td><td>(Tier 2) Resource Center live · recording + transcript posted</td><td>RUDI</td></tr>
       </tbody>
     </table>
-    <div class="text-xs text-[var(--ink-soft)] mt-3">Total elapsed: ~30 days. The workshop date is the only fixed-calendar item; everything else flexes around it.</div>
+    <div class="text-xs text-[var(--ink-soft)] mt-3">Total elapsed: ~30 days. Workshop date is the only fixed-calendar item; everything else flexes around it.</div>
   </div>
 </section>
 
@@ -207,33 +207,33 @@
     <div class="flex items-start justify-between flex-wrap gap-4">
       <div>
         <div class="pill pill-ink mb-2">Funding option</div>
-        <h3 class="serif text-xl mb-2">Ohio Tech Credit (if it returns in July)</h3>
+        <h3 class="serif text-xl mb-2">Ohio TechCred (if it returns in July)</h3>
         <p class="text-[var(--ink-soft)] text-sm max-w-2xl">Ohio's TechCred program reimburses employers up to <strong>$2,000 per W2 employee</strong> for upskilling in approved tech areas, including AI training. The program paused but is widely expected to reopen in July 2026.</p>
-        <p class="text-[var(--ink-soft)] text-sm mt-2">For Phase 1 specifically, this would offset RUDI's invoice if Phase 1 staff training qualifies. For Phase 2 (manager track, 65 staff), the math is much more significant. We're happy to structure the engagement so it stays eligible for retroactive credit if/when the program reopens.</p>
+        <p class="text-[var(--ink-soft)] text-sm mt-2">For Phase 1, this could offset the entire RUDI invoice if your training qualifies. For Phase 2 (manager track, 65 staff), the math becomes much more significant. We're happy to structure the engagement so it stays eligible for retroactive credit if/when the program reopens.</p>
       </div>
       <div class="text-right text-xs text-[var(--ink-soft)] min-w-fit">
         <div class="font-semibold text-[var(--ink)]">Ask Paula</div>
-        <div>Does CHPL currently participate in TechCred?</div>
+        <div>Does CHPL participate in TechCred?</div>
         <div>Who manages the application internally?</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- What's next -->
+<!-- Phase 2/3/4 -->
 <section class="max-w-5xl mx-auto px-6 pb-12">
   <h2 class="serif text-2xl mb-4">What Phase 1 earns CHPL</h2>
   <div class="grid md:grid-cols-3 gap-4">
-    <div class="card p-5">
-      <div class="pill pill-teal mb-2">Phase 2 · Manager Activation</div>
+    <div class="deliverable-card">
+      <div class="pill pill-teal mb-2">Phase 2 · Managers</div>
       <p class="text-sm text-[var(--ink-soft)]">~$25,000–$35,000 · Months 2–3 · 65 managers in three regional cohorts. Workshops, regional readiness map, manager toolkit. Sized similar to Warren County ESC engagement.</p>
     </div>
-    <div class="card p-5">
-      <div class="pill pill-moss mb-2">Phase 3 · Staff &amp; Branch Rollout</div>
+    <div class="deliverable-card">
+      <div class="pill pill-moss mb-2">Phase 3 · Staff</div>
       <p class="text-sm text-[var(--ink-soft)]">Range varies · Months 4–7 · ~815 staff, mobile-first delivery. Anonymous sampled survey, async video, monthly branch lunch &amp; learns. Scopes from $25,000 (light touch) to $60,000 (full).</p>
     </div>
-    <div class="card p-5">
-      <div class="pill pill-plum mb-2">Phase 4 · Pilots + Governance</div>
+    <div class="deliverable-card">
+      <div class="pill pill-plum mb-2">Phase 4 · Pilots</div>
       <p class="text-sm text-[var(--ink-soft)]">Range varies · Ongoing · First operational pilot (scheduling &amp; substitute coverage, named on the call), quarterly governance review, populated Resource Center. Scopes from $15,000 to $40,000 depending on pilot complexity.</p>
     </div>
   </div>
@@ -246,7 +246,7 @@
   <div class="card p-5 grid md:grid-cols-2 gap-6 text-sm">
     <div>
       <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-1">Payment</div>
-      <p>50% on signed acceptance · 50% on workshop delivery. Invoiced via RUDI / Heritage Hill. Net 30. Wire, ACH, or check.</p>
+      <p>50% on signed acceptance · 50% on workshop delivery. Invoiced via RUDI. Net 30. Wire, ACH, or check.</p>
     </div>
     <div>
       <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-1">Scheduling</div>
@@ -254,7 +254,7 @@
     </div>
     <div>
       <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-1">Ownership</div>
-      <p>CHPL owns the dashboard, action plan, and Resource Center site at completion. Survey data is held by RUDI during Phase 1 and delivered to CHPL on request.</p>
+      <p>CHPL owns the slide deck and (Tier 2) the dashboard, action plan, and Resource Center site at completion. Survey data is held by RUDI during Phase 1 and delivered to CHPL on request.</p>
     </div>
     <div>
       <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-1">Confidentiality</div>
@@ -263,17 +263,17 @@
   </div>
 </section>
 
-<!-- Next steps -->
+<!-- How to say yes -->
 <section class="max-w-5xl mx-auto px-6 pb-16">
   <div class="card p-6 bg-[var(--ink)] text-white">
     <h2 class="serif text-2xl text-white mb-3">How to say yes</h2>
     <p class="text-white/80 text-sm mb-4">Reply to <a href="mailto:hoff@learnrudi.com?subject=CHPL%20Phase%201%20Acceptance" class="underline">hoff@learnrudi.com</a> with:</p>
     <ol class="text-sm text-white/80 space-y-2 list-decimal list-inside mb-5">
-      <li>The tier you'd like to start with — <strong class="text-white">Lean ($2,500), Standard ($5,000), or Full ($7,500)</strong></li>
+      <li>The tier you'd like to start with — <strong class="text-white">$2,500 Workshop</strong> or <strong class="text-white">$5,000 Workshop + Resource Center</strong></li>
       <li>Two or three workshop dates that work for your leadership team</li>
       <li>Anyone else who should be CC'd on the engagement (procurement, finance, etc.)</li>
     </ol>
-    <p class="text-white/60 text-xs">An engagement letter goes out within one business day. Phase 1 can start within 7 days of acceptance.</p>
+    <p class="text-white/60 text-xs">Engagement letter goes out within one business day. Phase 1 can start within 7 days of acceptance.</p>
   </div>
 </section>
 
@@ -287,7 +287,7 @@
     </div>
     <div class="text-right text-xs text-[var(--ink-soft)]">
       <div><a href="./" class="hover:text-[var(--ink)]">← Back to Resource Center</a></div>
-      <div class="mt-1">Proposal v0.1 · prepared 12 May 2026 · for Paula &amp; Kyla</div>
+      <div class="mt-1">Proposal v0.2 · prepared 12 May 2026 · for Paula &amp; Kyla</div>
     </div>
   </div>
 </footer>
