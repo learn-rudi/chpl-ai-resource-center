@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Library AI Readiness — Survey Insights Preview</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1d2e;
+    --ink-soft: #2a3a52;
+    --paper: #f7f4ee;
+    --paper-2: #efeae0;
+    --accent: #b85a2c;
+    --accent-2: #d6904a;
+    --teal: #2c6e7a;
+    --moss: #4a6a3f;
+    --plum: #6b3a5c;
+    --line: #d9d0bf;
+  }
+  html, body { background: var(--paper); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; }
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+  .card { background: #ffffff; border: 1px solid var(--line); border-radius: 12px; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+  .pill-amber { background: #fbe9d3; color: #7a3e16; }
+  .pill-teal { background: #d6e8eb; color: #1c4f59; }
+  .pill-moss { background: #dde6d4; color: #314824; }
+  .pill-plum { background: #e6d4e0; color: #4a253f; }
+  .pill-ink { background: #e3e6ec; color: #2a3a52; }
+  .kpi-num { font-family: 'Fraunces', Georgia, serif; font-weight: 700; letter-spacing: -0.02em; }
+  .divider { height: 1px; background: var(--line); }
+  .insight { border-left: 3px solid var(--accent); background: #fff8ef; }
+  .grid-bg {
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(15,29,46,0.08) 1px, transparent 0);
+    background-size: 18px 18px;
+  }
+  .branch-chip { background: var(--paper-2); border: 1px solid var(--line); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--ink-soft); }
+  .legend-dot { display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:6px; vertical-align:middle; }
+  .data-callout { background: var(--paper-2); border: 1px dashed var(--line); border-radius: 8px; }
+  table.compact td, table.compact th { padding: 8px 10px; border-bottom: 1px solid var(--line); font-size: 13px; }
+  table.compact th { text-align: left; font-weight: 600; color: var(--ink-soft); background: var(--paper-2); }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- Sample-data banner -->
+<div class="bg-[var(--ink)] text-white text-center text-xs py-2 px-4">
+  <span class="pill pill-amber mr-2" style="background:#d6904a;color:#fff">Preview</span>
+  This dashboard shows <strong>sample insights</strong> from a 900-staff, 42-branch library system. Your live results will replace this dummy data after the survey closes.
+</div>
+
+<!-- Header -->
+<header class="max-w-6xl mx-auto px-6 pt-12 pb-8">
+  <div class="flex items-start justify-between flex-wrap gap-4">
+    <div>
+      <div class="flex items-center gap-3 mb-3">
+        <span class="pill pill-ink">RUDI · Responsible Use of Digital Intelligence</span>
+        <span class="pill pill-teal">Survey Preview</span>
+      </div>
+      <h1 class="serif text-4xl md:text-5xl leading-tight">Library AI Readiness <span class="text-[var(--accent)]">— Insights Preview</span></h1>
+      <p class="mt-3 text-[var(--ink-soft)] max-w-2xl">A sample report showing how staff responses are turned into action: where comfort lives, where anxiety clusters, and where to begin training.</p>
+    </div>
+    <div class="text-right text-sm text-[var(--ink-soft)]">
+      <div class="font-semibold text-[var(--ink)]">Sample organization</div>
+      <div>900 staff · 42 branches</div>
+      <div class="mt-1">Survey closed: <span class="font-medium">10 May 2026</span></div>
+      <div>Report generated: <span class="font-medium">12 May 2026</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- KPI strip -->
+<section class="max-w-6xl mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+  <div class="card p-5">
+    <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)]">Response rate</div>
+    <div class="kpi-num text-4xl mt-2">62<span class="text-2xl">%</span></div>
+    <div class="text-xs text-[var(--ink-soft)] mt-1">558 of 900 staff</div>
+  </div>
+  <div class="card p-5">
+    <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)]">Avg comfort with new digital tools</div>
+    <div class="kpi-num text-4xl mt-2">5.8<span class="text-2xl">/10</span></div>
+    <div class="text-xs text-[var(--ink-soft)] mt-1">Median 6 · σ 2.4</div>
+  </div>
+  <div class="card p-5">
+    <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)]">Use AI weekly or daily</div>
+    <div class="kpi-num text-4xl mt-2">31<span class="text-2xl">%</span></div>
+    <div class="text-xs text-[var(--ink-soft)] mt-1">+18pp vs. <em>monthly or less</em></div>
+  </div>
+  <div class="card p-5">
+    <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)]">Org maturity stage</div>
+    <div class="kpi-num text-3xl mt-2 leading-tight">Informal experimentation</div>
+    <div class="text-xs text-[var(--ink-soft)] mt-1">Stage 2 of 5</div>
+  </div>
+</section>
+
+<!-- Headline insight -->
+<section class="max-w-6xl mx-auto px-6 pb-8">
+  <div class="insight p-5 rounded-md">
+    <div class="text-xs uppercase tracking-wide text-[var(--accent)] font-semibold mb-1">Headline finding</div>
+    <p class="text-[var(--ink)] text-lg serif leading-snug">Curiosity outpaces capability. <span class="text-[var(--ink-soft)] text-base font-sans">Two-thirds of staff have tried AI at least once, but only 1 in 6 feel confident applying it to their daily work — and concerns concentrate around patron data, ethics, and energy use, not job loss.</span></p>
+  </div>
+</section>
+
+<!-- SECTION 1: Who responded -->
+<section class="max-w-6xl mx-auto px-6 pb-12">
+  <div class="flex items-baseline justify-between mb-4">
+    <h2 class="serif text-2xl">Who responded</h2>
+    <span class="text-xs text-[var(--ink-soft)]">Q1 · Q2</span>
+  </div>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="card p-5">
+      <div class="text-sm font-semibold mb-3">Age range</div>
+      <canvas id="ageChart" height="160"></canvas>
+    </div>
+    <div class="card p-5">
+      <div class="text-sm font-semibold mb-3">Role / department</div>
+      <canvas id="roleChart" height="160"></canvas>
+    </div>
+  </div>
+  <div class="data-callout mt-4 p-4 text-sm text-[var(--ink-soft)]">
+    <strong class="text-[var(--ink)]">Read:</strong> Response is well-distributed across age groups, with the strongest sample from staff aged 35–54 (54% of responses). Programming &amp; Direct Service (reference, children's, outreach) is the largest functional cohort — your training priorities should center on this group.
+  </div>
+</section>
+
+<!-- SECTION 2: AI tool usage -->
+<section class="max-w-6xl mx-auto px-6 pb-12">
+  <div class="flex items-baseline justify-between mb-4">
+    <h2 class="serif text-2xl">What AI staff have actually tried</h2>
+    <span class="text-xs text-[var(--ink-soft)]">Q3 · Q4 · Q5</span>
+  </div>
+  <div class="grid md:grid-cols-3 gap-4">
+    <div class="card p-5">
+      <div class="text-sm font-semibold">AI chatbots</div>
+      <div class="text-xs text-[var(--ink-soft)] mb-3">% of respondents who have used</div>
+      <canvas id="chatbotChart" height="180"></canvas>
+    </div>
+    <div class="card p-5">
+      <div class="text-sm font-semibold">AI agents <span class="text-xs text-[var(--ink-soft)] font-normal">(multi-step autonomous)</span></div>
+      <div class="text-xs text-[var(--ink-soft)] mb-3">% of respondents who have used</div>
+      <canvas id="agentChart" height="180"></canvas>
+    </div>
+    <div class="card p-5">
+      <div class="text-sm font-semibold">Specialized AI tools</div>
+      <div class="text-xs text-[var(--ink-soft)] mb-3">% of respondents who have used</div>
+      <canvas id="toolChart" height="180"></canvas>
+    </div>
+  </div>
+  <div class="data-callout mt-4 p-4 text-sm text-[var(--ink-soft)]">
+    <strong class="text-[var(--ink)]">Read:</strong> ChatGPT and Microsoft Copilot dominate exposure, but only 9% of staff have used an AI agent. Specialized tools (image generators, transcription, research assistants) are siloed in IT and Programming. <span class="text-[var(--ink)] font-medium">Recommendation:</span> standardize on one chatbot first; reserve agents for a later cohort.
+  </div>
+</section>
+
+<!-- SECTION 3: Frequency × Maturity -->
+<section class="max-w-6xl mx-auto px-6 pb-12">
+  <div class="flex items-baseline justify-between mb-4">
+    <h2 class="serif text-2xl">How often, and how mature</h2>
+    <span class="text-xs text-[var(--ink-soft)]">Q7 · Q8</span>
+  </div>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="card p-5">
+      <div class="text-sm font-semibold mb-3">Frequency of personal AI tool use</div>
+      <canvas id="freqChart" height="200"></canvas>
+    </div>
+    <div class="card p-5">
+      <div class="text-sm font-semibold mb-3">Perceived organizational AI maturity</div>
+      <div class="space-y-2 mt-2">
+        <div>
+          <div class="flex justify-between text-xs mb-1"><span>No use yet</span><span class="font-semibold">14%</span></div>
+          <div class="h-2 rounded bg-[var(--paper-2)]"><div class="h-2 rounded" style="width:14%; background:var(--ink-soft)"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs mb-1"><span>Individual staff experimenting informally</span><span class="font-semibold">58%</span></div>
+          <div class="h-2 rounded bg-[var(--paper-2)]"><div class="h-2 rounded" style="width:58%; background:var(--accent)"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs mb-1"><span>Small pilots in one area</span><span class="font-semibold">19%</span></div>
+          <div class="h-2 rounded bg-[var(--paper-2)]"><div class="h-2 rounded" style="width:19%; background:var(--accent-2)"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs mb-1"><span>Several pilots across units</span><span class="font-semibold">7%</span></div>
+          <div class="h-2 rounded bg-[var(--paper-2)]"><div class="h-2 rounded" style="width:7%; background:var(--teal)"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs mb-1"><span>Operationalized in standard workflows</span><span class="font-semibold">2%</span></div>
+          <div class="h-2 rounded bg-[var(--paper-2)]"><div class="h-2 rounded" style="width:2%; background:var(--moss)"></div></div>
+        </div>
+      </div>
+      <div class="mt-4 text-xs text-[var(--ink-soft)]">Maturity stage (weighted): <span class="font-semibold text-[var(--ink)]">Stage 2 — Informal experimentation</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: Comfort -->
+<section class="max-w-6xl mx-auto px-6 pb-12">
+  <div class="flex items-baseline justify-between mb-4">
+    <h2 class="serif text-2xl">Comfort with new digital tools</h2>
+    <span class="text-xs text-[var(--ink-soft)]">Q9 · 0–10 scale</span>
+  </div>
+  <div class="grid md:grid-cols-3 gap-4">
+    <div class="card p-5 md:col-span-2">
+      <div class="text-sm font-semibold mb-3">Distribution of self-reported comfort</div>
+      <canvas id="comfortChart" height="160"></canvas>
+    </div>
+    <div class="card p-5">
+      <div class="text-sm font-semibold mb-3">By cohort</div>
+      <table class="compact w-full">
+        <tr><th>Cohort</th><th class="text-right">Avg</th></tr>
+        <tr><td>Executive (n=12)</td><td class="text-right font-semibold">7.1</td></tr>
+        <tr><td>Middle management (n=39)</td><td class="text-right font-semibold">6.4</td></tr>
+        <tr><td>IT / Data (n=22)</td><td class="text-right font-semibold">8.3</td></tr>
+        <tr><td>Programming / Direct Service (n=210)</td><td class="text-right font-semibold">5.6</td></tr>
+        <tr><td>Operations / Admin (n=126)</td><td class="text-right font-semibold">5.4</td></tr>
+        <tr><td>Circulation / Shelving (n=149)</td><td class="text-right font-semibold">4.9</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="data-callout mt-4 p-4 text-sm text-[var(--ink-soft)]">
+    <strong class="text-[var(--ink)]">Read:</strong> The distribution is bimodal — a confident cluster (8–10) concentrated in IT and younger Programming staff, and a hesitant cluster (0–3) concentrated in Circulation and long-tenured Admin. A single foundations workshop will not serve both ends; plan for at least two tracks.
+  </div>
+</section>
+
+<!-- SECTION 5: Concerns -->
+<section class="max-w-6xl mx-auto px-6 pb-12">
+  <div class="flex items-baseline justify-between mb-4">
+    <h2 class="serif text-2xl">Top concerns about AI in the workplace</h2>
+    <span class="text-xs text-[var(--ink-soft)]">Q10 · multi-select, top 3</span>
+  </div>
+  <div class="card p-5">
+    <canvas id="concernChart" height="220"></canvas>
+  </div>
+  <div class="data-callout mt-4 p-4 text-sm text-[var(--ink-soft)]">
+    <strong class="text-[var(--ink)]">Read:</strong> Patron data privacy and energy/ethics lead — both consistent with a mission-driven library culture. Job displacement ranks 6th, well below national norms. <span class="text-[var(--ink)] font-medium">Implication:</span> training that opens with responsible-use framing (not productivity gains) will land better with this workforce.
+  </div>
+</section>
+
+<!-- SECTION 6: Process priorities -->
+<section class="max-w-6xl mx-auto px-6 pb-12">
+  <div class="flex items-baseline justify-between mb-4">
+    <h2 class="serif text-2xl">What staff want help with first</h2>
+    <span class="text-xs text-[var(--ink-soft)]">Q11 · 60-day priorities</span>
+  </div>
+  <div class="card p-5">
+    <canvas id="priorityChart" height="240"></canvas>
+  </div>
+  <div class="data-callout mt-4 p-4 text-sm text-[var(--ink-soft)]">
+    <strong class="text-[var(--ink)]">Read:</strong> Scheduling &amp; substitute coverage tops the list — a high-friction monthly task that touches every branch. This is exactly the kind of bounded, painful workflow where a small AI pilot pays for itself in weeks.
+  </div>
+</section>
+
+<!-- SECTION 7: Learning format + cohort -->
+<section class="max-w-6xl mx-auto px-6 pb-12">
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="card p-5">
+      <div class="flex items-baseline justify-between mb-3">
+        <div class="text-sm font-semibold">Preferred learning format</div>
+        <span class="text-xs text-[var(--ink-soft)]">Q12</span>
+      </div>
+      <canvas id="formatChart" height="200"></canvas>
+      <div class="text-xs text-[var(--ink-soft)] mt-3">Ongoing monthly bite-sized sessions are the runaway favorite (47%) — consistent with what other library systems request.</div>
+    </div>
+    <div class="card p-5">
+      <div class="flex items-baseline justify-between mb-3">
+        <div class="text-sm font-semibold">Verbatim themes from open responses</div>
+        <span class="text-xs text-[var(--ink-soft)]">Q13</span>
+      </div>
+      <ul class="space-y-3 text-sm">
+        <li class="border-l-2 border-[var(--accent)] pl-3 text-[var(--ink-soft)]">"I'd love to use it to help patrons, but I worry about giving them wrong information." <span class="block text-xs mt-1">— Reference, North Central</span></li>
+        <li class="border-l-2 border-[var(--teal)] pl-3 text-[var(--ink-soft)]">"Please don't make us use a tool that scrapes our patrons' search history." <span class="block text-xs mt-1">— Branch Manager, Anderson</span></li>
+        <li class="border-l-2 border-[var(--moss)] pl-3 text-[var(--ink-soft)]">"Show me how to make my Excel scheduling sheet less painful and I'm sold." <span class="block text-xs mt-1">— Operations, Forest Park</span></li>
+        <li class="border-l-2 border-[var(--plum)] pl-3 text-[var(--ink-soft)]">"What is the library's actual policy on this? Staff are asking and I don't have an answer." <span class="block text-xs mt-1">— Branch Manager, Main</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8: Branch geography -->
+<section class="max-w-6xl mx-auto px-6 pb-12">
+  <div class="flex items-baseline justify-between mb-4">
+    <h2 class="serif text-2xl">Where readiness lives, by branch</h2>
+    <span class="text-xs text-[var(--ink-soft)]">Derived · Q2 × Q9 × Q7</span>
+  </div>
+  <div class="card p-5">
+    <div class="grid md:grid-cols-3 gap-4">
+      <div>
+        <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-2">Most ready</div>
+        <div class="space-y-1">
+          <div class="flex justify-between"><span class="branch-chip">Forest Park</span><span class="text-sm font-semibold text-[var(--moss)]">7.4</span></div>
+          <div class="flex justify-between"><span class="branch-chip">Main (downtown)</span><span class="text-sm font-semibold text-[var(--moss)]">7.0</span></div>
+          <div class="flex justify-between"><span class="branch-chip">Anderson</span><span class="text-sm font-semibold text-[var(--moss)]">6.8</span></div>
+          <div class="flex justify-between"><span class="branch-chip">Blue Ash</span><span class="text-sm font-semibold text-[var(--moss)]">6.6</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-2">Mid-range</div>
+        <div class="space-y-1">
+          <div class="flex justify-between"><span class="branch-chip">Madisonville</span><span class="text-sm font-semibold text-[var(--ink-soft)]">5.8</span></div>
+          <div class="flex justify-between"><span class="branch-chip">North Central</span><span class="text-sm font-semibold text-[var(--ink-soft)]">5.7</span></div>
+          <div class="flex justify-between"><span class="branch-chip">Westwood</span><span class="text-sm font-semibold text-[var(--ink-soft)]">5.5</span></div>
+          <div class="flex justify-between"><span class="branch-chip">Cheviot</span><span class="text-sm font-semibold text-[var(--ink-soft)]">5.3</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)] mb-2">Most hesitant</div>
+        <div class="space-y-1">
+          <div class="flex justify-between"><span class="branch-chip">Mt. Healthy</span><span class="text-sm font-semibold text-[var(--accent)]">4.1</span></div>
+          <div class="flex justify-between"><span class="branch-chip">Symmes Township</span><span class="text-sm font-semibold text-[var(--accent)]">4.0</span></div>
+          <div class="flex justify-between"><span class="branch-chip">Reading</span><span class="text-sm font-semibold text-[var(--accent)]">3.8</span></div>
+          <div class="flex justify-between"><span class="branch-chip">Sharonville</span><span class="text-sm font-semibold text-[var(--accent)]">3.6</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="text-xs text-[var(--ink-soft)] mt-4">Index = (avg comfort × frequency-of-use weight). Branches with active maker spaces or younger demographics tend to score higher.</div>
+  </div>
+</section>
+
+<!-- Recommended next steps -->
+<section class="max-w-6xl mx-auto px-6 pb-16">
+  <h2 class="serif text-2xl mb-4">What we'd recommend doing with this data</h2>
+  <div class="grid md:grid-cols-3 gap-4">
+    <div class="card p-5">
+      <div class="pill pill-amber mb-3">Step 1 · 0–30 days</div>
+      <div class="font-semibold mb-2">90-min Executive Foundations</div>
+      <p class="text-sm text-[var(--ink-soft)]">Demystify AI for the senior leadership team (20). Cover what AI is and isn't, responsible use, and how to talk to staff about it. Outputs: shared vocabulary + draft governance principles.</p>
+    </div>
+    <div class="card p-5">
+      <div class="pill pill-teal mb-3">Step 2 · 30–60 days</div>
+      <div class="font-semibold mb-2">Pilot one painful workflow</div>
+      <p class="text-sm text-[var(--ink-soft)]">Scheduling &amp; substitute coverage was the #1 staff request. Build a small AI-assisted tool with one branch (Forest Park) — measure time saved, then decide whether to scale.</p>
+    </div>
+    <div class="card p-5">
+      <div class="pill pill-moss mb-3">Step 3 · 60–120 days</div>
+      <div class="font-semibold mb-2">Manager track + resource center</div>
+      <p class="text-sm text-[var(--ink-soft)]">Train the 65-person management team. Stand up a SharePoint AI Resource Center: prompt library, approved-tools list, FAQ for staff and patrons.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-[var(--line)] bg-[var(--paper-2)]">
+  <div class="max-w-6xl mx-auto px-6 py-8 flex flex-wrap items-center justify-between gap-4 text-sm text-[var(--ink-soft)]">
+    <div>
+      <div class="serif text-lg text-[var(--ink)]">RUDI · Responsible Use of Digital Intelligence</div>
+      <div class="text-xs">Survey + insights designed by Brandon Z. Hoff · learnrudi.com</div>
+    </div>
+    <div class="text-right text-xs">
+      <div>This is a sample preview with synthetic data.</div>
+      <div>Live results will populate after your survey closes.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const ink = '#0f1d2e';
+const inkSoft = '#2a3a52';
+const accent = '#b85a2c';
+const accent2 = '#d6904a';
+const teal = '#2c6e7a';
+const moss = '#4a6a3f';
+const plum = '#6b3a5c';
+const paper2 = '#efeae0';
+
+Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
+Chart.defaults.color = inkSoft;
+Chart.defaults.borderColor = '#d9d0bf';
+
+// Q1 Age
+new Chart(document.getElementById('ageChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Under 25','25–34','35–44','45–54','55–64','65+','Prefer not'],
+    datasets: [{ data: [8, 18, 28, 26, 15, 4, 1], backgroundColor: teal, borderRadius: 4 }]
+  },
+  options: { plugins:{legend:{display:false}}, scales:{ y:{beginAtZero:true, ticks:{callback:v=>v+'%'}}} }
+});
+
+// Q2 Role
+new Chart(document.getElementById('roleChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Programming /\nDirect Service','Operations /\nAdmin','Circulation /\nShelving','IT / Data','Leadership','Finance','Other'],
+    datasets: [{ data: [38, 23, 27, 4, 9, 2, 6], backgroundColor: accent, borderRadius: 4 }]
+  },
+  options: { plugins:{legend:{display:false}}, scales:{ y:{beginAtZero:true, ticks:{callback:v=>v+'%'}}} }
+});
+
+// Q3 Chatbots
+new Chart(document.getElementById('chatbotChart'), {
+  type: 'bar',
+  data: {
+    labels: ['ChatGPT','MS Copilot','Gemini','Claude','Perplexity','None'],
+    datasets: [{ data: [54, 38, 22, 11, 9, 31], backgroundColor: teal, borderRadius:4 }]
+  },
+  options: { indexAxis:'y', plugins:{legend:{display:false}}, scales:{ x:{beginAtZero:true, max:100, ticks:{callback:v=>v+'%'}}} }
+});
+
+// Q4 Agents
+new Chart(document.getElementById('agentChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Claude (agentic)','ChatGPT agents','Copilot agents','Custom GPTs','None'],
+    datasets: [{ data: [4, 6, 5, 3, 84], backgroundColor: accent, borderRadius:4 }]
+  },
+  options: { indexAxis:'y', plugins:{legend:{display:false}}, scales:{ x:{beginAtZero:true, max:100, ticks:{callback:v=>v+'%'}}} }
+});
+
+// Q5 Specialized
+new Chart(document.getElementById('toolChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Image generators','Transcription','Research / summary','Coding tools','Voice / TTS','None'],
+    datasets: [{ data: [16, 14, 22, 7, 9, 49], backgroundColor: plum, borderRadius:4 }]
+  },
+  options: { indexAxis:'y', plugins:{legend:{display:false}}, scales:{ x:{beginAtZero:true, max:100, ticks:{callback:v=>v+'%'}}} }
+});
+
+// Q7 Frequency
+new Chart(document.getElementById('freqChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Never','Rarely','Occasionally','Weekly','Daily'],
+    datasets: [{ data: [21, 24, 24, 19, 12], backgroundColor: [inkSoft, accent2, accent, teal, moss], borderRadius:4 }]
+  },
+  options: { plugins:{legend:{display:false}}, scales:{ y:{beginAtZero:true, ticks:{callback:v=>v+'%'}}} }
+});
+
+// Q9 Comfort distribution
+new Chart(document.getElementById('comfortChart'), {
+  type: 'bar',
+  data: {
+    labels: ['0','1','2','3','4','5','6','7','8','9','10'],
+    datasets: [{ data: [4, 6, 8, 9, 8, 13, 12, 11, 14, 10, 5], backgroundColor: accent, borderRadius:3 }]
+  },
+  options: { plugins:{legend:{display:false}}, scales:{ y:{beginAtZero:true, ticks:{callback:v=>v+'%'}} } }
+});
+
+// Q10 Concerns
+new Chart(document.getElementById('concernChart'), {
+  type: 'bar',
+  data: {
+    labels: [
+      'Patron data privacy',
+      'Energy / environmental impact',
+      'Misinformation to patrons',
+      'Copyright & creators',
+      'Bias & equity',
+      'Job displacement',
+      'Loss of human judgment',
+      'Surveillance / monitoring',
+      'Vendor lock-in',
+      'I have no concerns'
+    ],
+    datasets: [{ data: [62, 54, 49, 41, 36, 28, 24, 19, 14, 6], backgroundColor: ink, borderRadius:4 }]
+  },
+  options: { indexAxis:'y', plugins:{legend:{display:false}}, scales:{ x:{beginAtZero:true, max:80, ticks:{callback:v=>v+'%'}} } }
+});
+
+// Q11 Priorities
+new Chart(document.getElementById('priorityChart'), {
+  type: 'bar',
+  data: {
+    labels: [
+      'Scheduling & substitute coverage',
+      'Drafting program descriptions & flyers',
+      'Summarizing meetings / notes',
+      'Patron reference & research help',
+      'Email triage & responses',
+      'Reports & data analysis',
+      'Translating materials',
+      'Cataloging assistance',
+      'Grant writing'
+    ],
+    datasets: [{ data: [54, 47, 41, 38, 34, 29, 26, 22, 18], backgroundColor: teal, borderRadius:4 }]
+  },
+  options: { indexAxis:'y', plugins:{legend:{display:false}}, scales:{ x:{beginAtZero:true, max:80, ticks:{callback:v=>v+'%'}} } }
+});
+
+// Q12 Format
+new Chart(document.getElementById('formatChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Ongoing monthly bite-sized', 'Short series (3–4 sessions)', 'One focused workshop', 'Self-paced resources'],
+    datasets: [{ data: [47, 24, 17, 12], backgroundColor: [accent, teal, accent2, moss] }]
+  },
+  options: { plugins:{legend:{position:'bottom', labels:{boxWidth:12, font:{size:11}}}} }
+});
+</script>
+
+</body>
+</html>
