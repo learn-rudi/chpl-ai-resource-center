@@ -6,32 +6,32 @@
 <title>Insights Preview · CHPL AI Resource Center</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #0f1d2e;
-    --ink-soft: #2a3a52;
-    --paper: #f7f4ee;
-    --paper-2: #efeae0;
-    --accent: #b85a2c;
-    --accent-2: #d6904a;
-    --teal: #2c6e7a;
+    --ink: #0C2340;
+    --ink-soft: #262626;
+    --paper: #FFFFFF;
+    --paper-2: #F2F2F2;
+    --accent: #02729E;
+    --accent-2: #0090BD;
+    --teal: #02729E;
     --moss: #4a6a3f;
     --plum: #6b3a5c;
-    --line: #d9d0bf;
+    --line: #E5E5E5;
   }
-  html, body { background: var(--paper); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; }
-  .serif { font-family: 'Fraunces', Georgia, serif; }
+  html, body { background: var(--paper); color: var(--ink); font-family: 'Open Sans', system-ui, sans-serif; }
+  .serif { font-family: 'Open Sans', system-ui, sans-serif; }
   .card { background: #ffffff; border: 1px solid var(--line); border-radius: 12px; }
   .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
-  .pill-amber { background: #fbe9d3; color: #7a3e16; }
+  .pill-amber { background: #D6E8EB; color: #02729E; }
   .pill-teal { background: #d6e8eb; color: #1c4f59; }
   .pill-moss { background: #dde6d4; color: #314824; }
   .pill-plum { background: #e6d4e0; color: #4a253f; }
   .pill-ink { background: #e3e6ec; color: #2a3a52; }
-  .kpi-num { font-family: 'Fraunces', Georgia, serif; font-weight: 700; letter-spacing: -0.02em; }
+  .kpi-num { font-family: 'Open Sans', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.02em; }
   .divider { height: 1px; background: var(--line); }
-  .insight { border-left: 3px solid var(--accent); background: #fff8ef; }
+  .insight { border-left: 3px solid var(--accent); background: #F0F8FB; }
   .grid-bg {
     background-image:
       radial-gradient(circle at 1px 1px, rgba(15,29,46,0.08) 1px, transparent 0);
@@ -50,7 +50,7 @@
 <div class="bg-[var(--ink)] text-white text-xs">
   <div class="max-w-6xl mx-auto px-6 py-2 flex items-center justify-between flex-wrap gap-2">
     <a href="../" class="text-white/80 hover:text-white">← CHPL AI Resource Center</a>
-    <span><span class="pill pill-amber mr-2" style="background:#d6904a;color:#fff">Preview</span>Sample data — your live results will replace this once the survey closes.</span>
+    <span><span class="pill pill-amber mr-2" style="background:#0090BD;color:#fff">Preview</span>Sample data — your live results will replace this once the survey closes.</span>
   </div>
 </div>
 
@@ -357,16 +357,16 @@
 </footer>
 
 <script>
-const ink = '#0f1d2e';
+const ink = '#0C2340';
 const inkSoft = '#2a3a52';
-const accent = '#b85a2c';
-const accent2 = '#d6904a';
+const accent = '#02729E';
+const accent2 = '#0090BD';
 const teal = '#2c6e7a';
 const moss = '#4a6a3f';
 const plum = '#6b3a5c';
-const paper2 = '#efeae0';
+const paper2 = '#F2F2F2';
 
-Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
+Chart.defaults.font.family = "'Open Sans', system-ui, sans-serif";
 Chart.defaults.color = inkSoft;
 Chart.defaults.borderColor = '#d9d0bf';
 

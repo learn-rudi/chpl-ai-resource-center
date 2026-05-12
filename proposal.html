@@ -6,25 +6,25 @@
 <meta name="robots" content="noindex,nofollow" />
 <title>Phase 1 Proposal · CHPL × RUDI</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #0f1d2e;
-    --ink-soft: #2a3a52;
-    --paper: #f7f4ee;
-    --paper-2: #efeae0;
-    --accent: #b85a2c;
-    --accent-2: #d6904a;
-    --teal: #2c6e7a;
+    --ink: #0C2340;
+    --ink-soft: #262626;
+    --paper: #FFFFFF;
+    --paper-2: #F2F2F2;
+    --accent: #02729E;
+    --accent-2: #0090BD;
+    --teal: #02729E;
     --moss: #4a6a3f;
     --plum: #6b3a5c;
-    --line: #d9d0bf;
+    --line: #E5E5E5;
   }
-  html, body { background: var(--paper); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; }
-  .serif { font-family: 'Fraunces', Georgia, serif; }
+  html, body { background: var(--paper); color: var(--ink); font-family: 'Open Sans', system-ui, sans-serif; }
+  .serif { font-family: 'Open Sans', system-ui, sans-serif; }
   .card { background:#fff; border:1px solid var(--line); border-radius:12px; }
   .pill { display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
-  .pill-amber { background:#fbe9d3; color:#7a3e16; }
+  .pill-amber { background:#D6E8EB; color:#02729E; }
   .pill-teal { background:#d6e8eb; color:#1c4f59; }
   .pill-moss { background:#dde6d4; color:#314824; }
   .pill-plum { background:#e6d4e0; color:#4a253f; }
@@ -34,15 +34,15 @@
   .check { color: var(--moss); font-weight:700; font-size: 16px; }
   .dash { color: #c8c0ad; font-weight:700; font-size: 16px; }
   .tier-card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:28px; position: relative; }
-  .tier-card.featured { border: 2px solid var(--accent); box-shadow: 0 12px 28px rgba(184,90,44,0.15); background: linear-gradient(180deg, #fff 0%, #fffaf3 100%); }
+  .tier-card.featured { border: 2px solid var(--accent); box-shadow: 0 12px 28px rgba(2,114,158,0.15); background: linear-gradient(180deg, #fff 0%, #F0F8FB 100%); }
   .tier-card.featured::before { content: "Recommended"; position: absolute; top:-13px; left:50%; transform: translateX(-50%); background: var(--accent); color:#fff; padding: 4px 14px; border-radius: 999px; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform: uppercase; white-space: nowrap;}
-  .price { font-family: 'Fraunces', Georgia, serif; font-weight: 700; letter-spacing: -0.02em; }
+  .price { font-family: 'Open Sans', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.02em; }
   table.cmp { width:100%; border-collapse: collapse; font-size: 14px; }
   table.cmp th, table.cmp td { padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: middle; text-align: center; }
   table.cmp th { background: var(--paper-2); font-weight: 700; color: var(--ink); font-size: 13px; letter-spacing: .02em; }
   table.cmp tr td:first-child, table.cmp tr th:first-child { text-align: left; font-weight: 500; }
-  table.cmp tr.tier-row th { font-family: 'Fraunces', Georgia, serif; font-size: 16px; }
-  .insight { border-left: 3px solid var(--accent); background: #fff8ef; }
+  table.cmp tr.tier-row th { font-family: 'Open Sans', system-ui, sans-serif; font-size: 16px; }
+  .insight { border-left: 3px solid var(--accent); background: #F0F8FB; }
   .deliverable-card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:20px; }
 </style>
 </head>
@@ -58,12 +58,20 @@
 
 <!-- Header -->
 <header class="max-w-5xl mx-auto px-6 pt-12 pb-8">
+  <div class="flex items-center gap-4 mb-8 flex-wrap">
+    <img src="./assets/chpl-logo.png" alt="Cincinnati &amp; Hamilton County Public Library" class="h-12 w-auto" />
+    <span class="text-2xl text-[var(--ink-soft)] font-light">×</span>
+    <div>
+      <div class="text-base font-bold tracking-tight text-[var(--ink)]">RUDI</div>
+      <div class="text-[10px] text-[var(--ink-soft)] uppercase tracking-wider">Responsible Use of Digital Intelligence</div>
+    </div>
+  </div>
   <div class="flex items-center gap-2 mb-3 flex-wrap">
     <span class="pill pill-amber">Proposal</span>
     <span class="pill pill-ink">For Paula &amp; Kyla</span>
     <span class="pill pill-muted">Draft for review</span>
   </div>
-  <h1 class="serif text-4xl md:text-5xl leading-tight">Phase 1 · Executive AI Foundations</h1>
+  <h1 class="serif text-4xl md:text-5xl leading-tight font-bold">Phase 1 · Executive AI Foundations</h1>
   <p class="mt-4 text-[var(--ink-soft)] max-w-3xl text-lg">A 30-day engagement to baseline where CHPL's senior leadership team stands with AI today and equip them to set tone, policy, and direction for the rest of the rollout.</p>
 </header>
 

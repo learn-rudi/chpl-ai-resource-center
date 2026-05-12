@@ -6,26 +6,26 @@
 <title>CHPL AI Resource Center</title>
 <meta name="description" content="Cincinnati & Hamilton County Public Library — AI literacy, tooling, and governance, built in partnership with RUDI." />
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #0f1d2e;
-    --ink-soft: #2a3a52;
-    --paper: #f7f4ee;
-    --paper-2: #efeae0;
-    --accent: #b85a2c;
-    --accent-2: #d6904a;
-    --teal: #2c6e7a;
+    --ink: #0C2340;
+    --ink-soft: #262626;
+    --paper: #FFFFFF;
+    --paper-2: #F2F2F2;
+    --accent: #02729E;
+    --accent-2: #0090BD;
+    --teal: #02729E;
     --moss: #4a6a3f;
     --plum: #6b3a5c;
-    --line: #d9d0bf;
+    --line: #E5E5E5;
   }
-  html, body { background: var(--paper); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; }
-  .serif { font-family: 'Fraunces', Georgia, serif; }
+  html, body { background: var(--paper); color: var(--ink); font-family: 'Open Sans', system-ui, sans-serif; }
+  .serif { font-family: 'Open Sans', system-ui, sans-serif; }
   .card { background: #ffffff; border: 1px solid var(--line); border-radius: 12px; transition: border-color .15s ease, transform .15s ease; }
   .card:hover { border-color: var(--accent); transform: translateY(-2px); }
   .pill { display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
-  .pill-amber { background:#fbe9d3; color:#7a3e16; }
+  .pill-amber { background:#D6E8EB; color:#02729E; }
   .pill-teal { background:#d6e8eb; color:#1c4f59; }
   .pill-moss { background:#dde6d4; color:#314824; }
   .pill-plum { background:#e6d4e0; color:#4a253f; }
@@ -38,7 +38,7 @@
   .ctaBtn-primary:hover { background: var(--accent); }
   .ctaBtn-ghost { color: var(--ink); border: 1px solid var(--line); background:#fff; }
   .ctaBtn-ghost:hover { border-color: var(--ink); }
-  .num { font-family: 'Fraunces', Georgia, serif; font-weight:600; }
+  .num { font-family: 'Open Sans', system-ui, sans-serif; font-weight:600; }
 </style>
 </head>
 <body class="min-h-screen">
@@ -52,22 +52,29 @@
 </div>
 
 <!-- Hero -->
-<header class="max-w-6xl mx-auto px-6 pt-16 pb-12">
+<header class="max-w-6xl mx-auto px-6 pt-12 pb-12">
+  <div class="flex items-center gap-5 mb-8 flex-wrap">
+    <img src="./assets/chpl-logo.png" alt="Cincinnati &amp; Hamilton County Public Library" class="h-16 w-auto" />
+    <span class="text-3xl text-[var(--ink-soft)] font-light">×</span>
+    <div>
+      <div class="text-xl font-bold tracking-tight text-[var(--ink)]">RUDI</div>
+      <div class="text-xs text-[var(--ink-soft)] uppercase tracking-wider">Responsible Use of Digital Intelligence</div>
+    </div>
+  </div>
   <div class="grid md:grid-cols-3 gap-8 items-end">
     <div class="md:col-span-2">
       <div class="flex items-center gap-2 mb-4">
         <span class="pill pill-amber">AI Resource Center</span>
         <span class="pill pill-muted">v0.1 · preview</span>
       </div>
-      <h1 class="serif text-5xl md:text-6xl leading-[1.05] tracking-tight">
-        Cincinnati &amp; Hamilton County Public Library
-        <span class="block text-[var(--accent)]">AI Resource Center</span>
+      <h1 class="serif text-5xl md:text-6xl leading-[1.05] tracking-tight font-bold">
+        AI Resource Center
       </h1>
-      <p class="mt-5 text-[var(--ink-soft)] text-lg max-w-2xl">A working home for everything CHPL needs to roll out AI responsibly — literacy for staff, tools for managers, governance for leadership, and reassurance for patrons.</p>
+      <p class="mt-5 text-[var(--ink-soft)] text-lg max-w-2xl">A working home for everything Cincinnati &amp; Hamilton County Public Library needs to roll out AI responsibly — literacy for staff, tools for managers, governance for leadership, and reassurance for patrons.</p>
     </div>
     <div class="card p-5">
       <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)]">Designed in partnership with</div>
-      <div class="serif text-xl mt-1">RUDI</div>
+      <div class="serif text-xl mt-1 font-bold">RUDI</div>
       <div class="text-xs text-[var(--ink-soft)]">Brandon Z. Hoff · hoff@learnrudi.com</div>
       <div class="divider my-3"></div>
       <div class="text-xs uppercase tracking-wide text-[var(--ink-soft)]">Scope</div>
